@@ -1,0 +1,12 @@
+-- AlterTable: patient medical profile on User
+ALTER TABLE "User" ADD COLUMN "dateOfBirth" TIMESTAMP(3);
+ALTER TABLE "User" ADD COLUMN "gender" TEXT;
+ALTER TABLE "User" ADD COLUMN "bloodType" TEXT;
+ALTER TABLE "User" ADD COLUMN "allergies" TEXT;
+ALTER TABLE "User" ADD COLUMN "chronicConditions" TEXT;
+ALTER TABLE "User" ADD COLUMN "currentMedications" TEXT;
+ALTER TABLE "User" ADD COLUMN "previousSurgeries" TEXT;
+ALTER TABLE "User" ADD COLUMN "familyHistory" TEXT;
+ALTER TABLE "User" ADD COLUMN "medicalNotes" TEXT;
+ALTER TABLE "User" ADD COLUMN "emergencyContactName" TEXT;
+ALTER TABLE "User" ADD COLUMN "emergencyContactPhone" TEXT;
