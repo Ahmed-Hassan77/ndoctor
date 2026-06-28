@@ -139,8 +139,8 @@ export function DoctorProfile({
     : localized.displayLocation;
 
   return (
-    <div dir={dir} className="min-w-0 w-full">
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,380px)] lg:items-start">
+    <div dir={dir} className="min-w-0 w-full overflow-x-hidden">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,380px)] lg:items-start lg:gap-8">
         {/* Booking first on mobile */}
         <aside className="min-w-0 lg:sticky lg:top-24 lg:order-2">
           <DoctorBookingPanel

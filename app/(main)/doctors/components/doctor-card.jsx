@@ -79,7 +79,7 @@ export function DoctorCard({
       <Card className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card shadow-md ring-1 ring-primary/5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/35 hover:shadow-xl">
         <CardContent className="flex h-full min-w-0 flex-1 flex-col p-0">
           <div className="relative shrink-0">
-            <div className="relative aspect-[16/10] max-h-[220px] overflow-hidden bg-muted">
+            <div className="relative aspect-[16/10] max-h-[180px] sm:max-h-[220px] overflow-hidden bg-muted rounded-t-2xl">
               {showFavorite ? (
                 <div className="absolute start-2 top-2 z-10 rounded-full bg-background/90 p-0.5 shadow backdrop-blur-sm">
                   <FavoriteDoctorButton
@@ -92,7 +92,7 @@ export function DoctorCard({
                 imageUrl={doctor.imageUrl}
                 name={localized.displayName}
                 size="cover"
-                className="rounded-none"
+                className="rounded-t-2xl"
               />
               {(doctor.totalReviews ?? 0) > 0 ? (
                 <div className="absolute bottom-2 end-2 flex items-center gap-1 rounded-md border border-border/50 bg-background/95 px-2 py-1 text-xs font-bold shadow-sm backdrop-blur-sm">
@@ -106,14 +106,14 @@ export function DoctorCard({
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col p-4 text-start sm:p-5">
+          <div className="flex min-h-0 flex-1 flex-col p-3 text-start sm:p-4 md:p-5">
             <div className="mb-2 flex items-start justify-between gap-2">
               <div className="min-w-0 flex-1">
                 <div className="mb-1.5 inline-flex max-w-full items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
                   <Stethoscope className="size-3 shrink-0" />
                   <span className="line-clamp-1">{localized.displaySpecialty}</span>
                 </div>
-                <h3 className="text-lg font-bold leading-snug text-foreground group-hover:text-primary">
+                <h3 className="text-base sm:text-lg font-bold leading-snug text-foreground group-hover:text-primary line-clamp-1">
                   {displayName}
                 </h3>
               </div>
@@ -148,7 +148,7 @@ export function DoctorCard({
               </p>
             ) : null}
 
-            <div className="mb-3 grid grid-cols-2 gap-2">
+            <div className="mb-3 grid grid-cols-1 xs:grid-cols-2 gap-2">
               <div className="flex min-w-0 flex-col rounded-lg border border-border/60 bg-muted/30 px-2.5 py-2 text-xs">
                 <span className="mb-0.5 inline-flex items-center gap-1 text-muted-foreground">
                   <Video className="size-3.5 shrink-0 text-primary" />
@@ -177,7 +177,7 @@ export function DoctorCard({
               <div className="mb-4 flex-1" />
             )}
 
-            <div className="mt-auto grid grid-cols-1 gap-2 sm:grid-cols-2">
+            <div className="mt-auto grid grid-cols-1 gap-2 xs:grid-cols-2 sm:grid-cols-2">
               <Button
                 asChild
                 size="lg"

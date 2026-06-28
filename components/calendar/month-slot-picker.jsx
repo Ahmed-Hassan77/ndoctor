@@ -119,7 +119,7 @@ export function MonthSlotPicker({
               {t("slotPicker.noSlots")}
             </p>
           ) : (
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-2 xl:grid-cols-3">
               {slotsForDay.map((slot) => {
                 const selected = selectedSlot?.startTime === slot.startTime;
                 return (
@@ -128,7 +128,7 @@ export function MonthSlotPicker({
                     type="button"
                     onClick={() => setSelectedSlot(slot)}
                     className={cn(
-                      "flex min-h-[4.5rem] w-full min-w-0 items-center rounded-lg border px-3 py-2.5 text-start transition-colors",
+                      "flex min-h-[4rem] w-full min-w-0 items-center rounded-lg border px-2 py-2 text-start transition-colors sm:min-h-[4.5rem] sm:px-3 sm:py-2.5",
                       selected
                         ? "border-primary bg-primary/15 shadow-sm"
                         : "border-primary/15 hover:border-primary/30 hover:bg-primary/5"

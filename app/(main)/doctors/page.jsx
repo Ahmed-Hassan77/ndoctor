@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { searchDoctors, getDiscoveryFilterOptions } from "@/actions/doctors-listing";
 import { getFavoriteDoctorIds } from "@/actions/favorites";
 import { parseDoctorSearchParams, hasActiveDiscoveryFilters } from "@/lib/doctor-discovery-params";
+import { DoctorCard } from "@/app/(main)/doctors/components/doctor-card";
 import { DoctorsCarouselList } from "./components/doctors-carousel-list";
 import { DoctorsMarketplaceFilters } from "./components/doctors-marketplace-filters";
 import { DoctorsActiveFilters } from "./components/doctors-active-filters";
@@ -92,11 +93,28 @@ async function DoctorsResults({ searchParams }) {
             showReset={filtersActive}
           />
         ) : (
-          <DoctorsCarouselList
-            doctors={doctors}
-            showFavorite={showFavorite}
-            favoriteDoctorIds={[...favoriteIds]}
-          />
+          <>
+            <div className="hidden lg:block">
+              <DoctorsCarouselList
+                doctors={doctors}
+                showFavorite={showFavorite}
+                favoriteDoctorIds={[...favoriteIds]}
+              />
+            </div>
+            <div className="flex flex-col gap-4 lg:hidden">
+              {doctors.map((doctor) => (
+                <DoctorCard
+                  key={doctor.id}
+                  doctor={doctor}
+                  variant="marketplace"
+                  showFavorite={showFavorite}
+                  initialFavorited={
+                    showFavorite ? favoriteIds.has(doctor.id) : undefined
+                  }
+                />
+              ))}
+            </div>
+          </>
         )}
 
         <DoctorsSpecialtyBrowse />

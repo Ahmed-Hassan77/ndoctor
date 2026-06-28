@@ -80,7 +80,7 @@ export function DoctorsCarousel({ children, className }) {
                 "xl:basis-1/3"
               )}
             >
-              <div className="flex h-full min-h-[420px] flex-col pb-1">
+              <div className="flex h-full min-h-[380px] sm:min-h-[420px] flex-col pb-4 sm:pb-1">
                 {slide}
               </div>
             </div>

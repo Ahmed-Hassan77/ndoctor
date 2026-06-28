@@ -21,17 +21,19 @@ export function BookingStepIndicator({ current, className }) {
     <nav
       dir={dir}
       aria-label={t("booking.progressLabel")}
-      className={cn("min-w-0", className)}
+      className={cn("min-w-0 overflow-x-auto", className)}
     >
-      <ol className="flex flex-wrap items-center gap-1 text-xs sm:text-sm">
+      <ol className="flex min-w-max items-center gap-1 pb-0.5 text-[11px] sm:text-sm">
         {STEPS.map((step, index) => {
           const done = index < currentIndex;
           const active = step.id === current;
+          const isClinicStep = current === "clinic" && step.id === "slot";
+          const stepActive = active || isClinicStep;
           return (
-            <li key={step.id} className="flex min-w-0 items-center gap-1">
+            <li key={step.id} className="flex shrink-0 items-center gap-1">
               {index > 0 && (
                 <span
-                  className="mx-0.5 hidden text-muted-foreground sm:inline"
+                  className="mx-0.5 text-muted-foreground"
                   aria-hidden
                 >
                   /
@@ -39,10 +41,10 @@ export function BookingStepIndicator({ current, className }) {
               )}
               <span
                 className={cn(
-                  "inline-flex max-w-full items-center gap-1 rounded-full px-2 py-0.5 font-medium",
-                  active && "bg-primary/15 text-primary",
-                  done && !active && "text-primary/80",
-                  !active && !done && "text-muted-foreground"
+                  "inline-flex max-w-[7.5rem] items-center gap-1 rounded-full px-1.5 py-0.5 font-medium sm:max-w-none sm:px-2",
+                  stepActive && "bg-primary/15 text-primary",
+                  done && !stepActive && "text-primary/80",
+                  !stepActive && !done && "text-muted-foreground"
                 )}
               >
                 {done ? (
@@ -51,7 +53,7 @@ export function BookingStepIndicator({ current, className }) {
                   <span
                     className={cn(
                       "flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[10px]",
-                      active
+                      stepActive
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted text-muted-foreground"
                     )}

@@ -105,19 +105,20 @@ export function MonthCalendar({
         </Button>
       </div>
 
-      <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-medium text-muted-foreground sm:text-xs">
+      <div className="grid grid-cols-7 gap-0.5 text-center text-[9px] font-medium text-muted-foreground sm:gap-1 sm:text-xs">
         {weekdayLabels.map((label) => (
-          <div key={label} className="truncate py-1">
-            {label}
+          <div key={label} className="truncate py-0.5 sm:py-1">
+            <span className="sm:hidden">{label.charAt(0)}</span>
+            <span className="hidden sm:inline">{label}</span>
           </div>
         ))}
       </div>
 
-      <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
+      <div className="grid grid-cols-7 gap-0.5 sm:gap-1.5">
         {cells.map((cell) => {
           if (cell.type === "pad") {
             return (
-              <div key={cell.key} className="aspect-square min-h-8 sm:min-h-10" />
+              <div key={cell.key} className="aspect-square min-h-7 sm:min-h-10" />
             );
           }
 
@@ -139,7 +140,7 @@ export function MonthCalendar({
               disabled={disabled && selectedDate !== cell.dateStr}
               onClick={() => onSelectDate?.(cell.dateStr)}
               className={cn(
-                "aspect-square min-h-8 rounded-md text-xs font-medium transition-colors sm:min-h-10 sm:text-sm",
+                "aspect-square min-h-7 rounded-md text-[11px] font-medium transition-colors sm:min-h-10 sm:text-sm",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
                 STATE_STYLES[state] ?? STATE_STYLES.unavailable,
                 disabled &&

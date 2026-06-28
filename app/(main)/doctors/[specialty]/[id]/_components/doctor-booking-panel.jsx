@@ -147,8 +147,8 @@ export function DoctorBookingPanel({
     (appointmentMode === "OFFLINE" && selectedClinicId);
 
   return (
-    <Card id="booking-section" className="min-w-0 border-border shadow-sm" dir={dir}>
-      <CardHeader className="space-y-3 border-b border-border/50 pb-4">
+    <Card id="booking-section" className="min-w-0 overflow-hidden border-border shadow-sm" dir={dir}>
+      <CardHeader className="space-y-3 border-b border-border/50 px-4 pb-4 pt-5 sm:px-6">
         <div>
           <CardTitle className="text-lg text-foreground">{t("booking.title")}</CardTitle>
           <CardDescription className="break-words">{t("booking.subtitle")}</CardDescription>
@@ -156,7 +156,7 @@ export function DoctorBookingPanel({
         <BookingStepIndicator current={bookingStep} />
       </CardHeader>
 
-      <CardContent className="min-w-0 pt-5">
+      <CardContent className="min-w-0 overflow-x-hidden px-4 pt-5 sm:px-6">
         {bookingStep === "mode" && (
           <div className="space-y-3">
             <p className="text-sm text-muted-foreground">{t("booking.selectVisitType")}</p>

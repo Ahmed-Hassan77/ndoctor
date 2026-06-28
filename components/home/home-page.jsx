@@ -50,19 +50,19 @@ export function HomePage({ featuredDoctors = [], dbError = null }) {
   return (
     <div dir={dir} className="min-w-0">
       {/* Hero */}
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden border-b border-border/60 pt-4 md:min-h-[90vh]">
+      <section className="relative flex min-h-0 items-center overflow-hidden border-b border-border/60 py-8 md:min-h-[85vh] md:py-14 lg:min-h-[90vh]">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/[0.07] via-background to-muted/40"
         />
-        <div className="relative container mx-auto px-4 py-10 md:py-14">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="relative container mx-auto min-w-0 px-4 py-6 md:py-10">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
             <motion.div
               initial="hidden"
               animate="visible"
               variants={fadeInLeft}
               className={cn(
-                "relative mx-auto hidden max-w-lg lg:block",
+                "relative order-2 mx-auto w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:order-2 lg:max-w-lg",
                 dir === "ltr" && "lg:order-2"
               )}
             >
@@ -71,24 +71,25 @@ export function HomePage({ featuredDoctors = [], dbError = null }) {
                 alt=""
                 width={480}
                 height={600}
-                className="mx-auto h-[min(500px,58vh)] w-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 360px, 480px"
+                className="mx-auto h-auto w-full max-h-[200px] object-contain drop-shadow-2xl sm:max-h-[260px] md:max-h-[340px] lg:max-h-[min(500px,58vh)] lg:w-auto lg:transition-transform lg:duration-500 lg:hover:scale-[1.02]"
                 priority
               />
-              <motion.div variants={float} animate="animate" className="absolute top-14 end-6 z-10 rounded-2xl border border-border/60 bg-card/95 p-3 shadow-lg backdrop-blur-md">
+              <motion.div variants={float} animate="animate" className="absolute top-8 end-2 z-10 hidden rounded-2xl border border-border/60 bg-card/95 p-2.5 shadow-lg backdrop-blur-md sm:block sm:end-4 sm:p-3 md:top-14 md:end-6">
                 <div className="flex items-center gap-2">
-                  <Star className="size-5 fill-primary text-primary" />
-                  <span className="text-sm font-bold">{t("home.heroFloatingRating")}</span>
+                  <Star className="size-4 fill-primary text-primary sm:size-5" />
+                  <span className="text-xs font-bold sm:text-sm">{t("home.heroFloatingRating")}</span>
                 </div>
-                <p className="mt-1 text-xs font-medium text-muted-foreground">
+                <p className="mt-1 text-[10px] font-medium text-muted-foreground sm:text-xs">
                   {t("home.heroFloatingRatingSub")}
                 </p>
               </motion.div>
-              <motion.div variants={float} animate="animate" transition={{ delay: 0.5 }} className="absolute bottom-28 start-6 z-10 rounded-2xl border border-border/60 bg-card/95 p-3 shadow-lg backdrop-blur-md">
+              <motion.div variants={float} animate="animate" transition={{ delay: 0.5 }} className="absolute bottom-16 start-2 z-10 hidden rounded-2xl border border-border/60 bg-card/95 p-2.5 shadow-lg backdrop-blur-md sm:block sm:start-4 sm:p-3 md:bottom-28 md:start-6">
                 <div className="flex items-center gap-2">
                   <span className="inline-block size-2 rounded-full bg-green-500" />
-                  <span className="text-sm font-bold">{t("home.heroFloatingVerified")}</span>
+                  <span className="text-xs font-bold sm:text-sm">{t("home.heroFloatingVerified")}</span>
                 </div>
-                <p className="mt-1 text-xs font-medium text-muted-foreground">
+                <p className="mt-1 text-[10px] font-medium text-muted-foreground sm:text-xs">
                   {t("home.heroFloatingVerifiedSub")}
                 </p>
               </motion.div>
@@ -98,7 +99,10 @@ export function HomePage({ featuredDoctors = [], dbError = null }) {
               initial="hidden"
               animate="visible"
               variants={fadeInRight}
-              className={cn("min-w-0 space-y-6", dir === "ltr" && "lg:order-1")}
+              className={cn(
+                "order-1 min-w-0 space-y-5 sm:space-y-6",
+                dir === "ltr" && "lg:order-1"
+              )}
             >
               <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/90 px-4 py-2 text-sm font-medium shadow-sm backdrop-blur-sm">
                 <span className="inline-block size-2 rounded-full bg-primary" />
@@ -106,14 +110,14 @@ export function HomePage({ featuredDoctors = [], dbError = null }) {
               </div>
 
               <div className="text-center lg:text-start">
-                <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
+                <h1 className="text-3xl font-bold leading-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
                   {t("home.headline")}
                   <span className="mt-2 block gradient-title">{t("home.headlineAccent")}</span>
                 </h1>
-                <p className="mt-4 text-lg text-muted-foreground md:text-xl">
+                <p className="mt-3 text-base text-muted-foreground sm:mt-4 sm:text-lg md:text-xl">
                   {t("home.subhead")}
                 </p>
-                <p className="mt-2 text-lg font-semibold gradient-title md:text-xl">
+                <p className="mt-2 text-base font-semibold gradient-title sm:text-lg md:text-xl">
                   {t("home.subheadGradient")}
                 </p>
               </div>
@@ -124,18 +128,22 @@ export function HomePage({ featuredDoctors = [], dbError = null }) {
 
               <form
                 onSubmit={onHeroSearch}
-                className="mx-auto flex max-w-xl gap-2 rounded-2xl bg-card p-2 shadow-xl ring-1 ring-primary/10 lg:mx-0"
+                className="mx-auto flex w-full max-w-xl min-w-0 flex-col gap-2 overflow-hidden rounded-2xl bg-card p-2 shadow-xl ring-1 ring-primary/10 sm:flex-row sm:items-stretch lg:mx-0"
               >
                 <input
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={t("home.heroSearchPlaceholder")}
-                  className="min-h-12 flex-1 rounded-xl border-0 bg-transparent px-4 text-foreground outline-none placeholder:text-muted-foreground"
+                  className="min-h-11 w-full min-w-0 flex-1 rounded-xl border-0 bg-transparent px-3 text-sm text-foreground outline-none placeholder:text-muted-foreground sm:min-h-12 sm:px-4 sm:text-base"
                 />
-                <Button type="submit" size="lg" className="shrink-0 rounded-xl px-6">
-                  <Search className="me-2 size-5" />
-                  {t("home.searchDoctors")}
+                <Button
+                  type="submit"
+                  size="default"
+                  className="h-11 w-full shrink-0 rounded-xl px-4 text-sm sm:h-12 sm:w-auto sm:px-5"
+                >
+                  <Search className="size-4 sm:me-2" />
+                  <span className="truncate">{t("home.searchDoctors")}</span>
                 </Button>
               </form>
 
